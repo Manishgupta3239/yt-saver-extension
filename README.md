@@ -1,50 +1,45 @@
-# React + TypeScript + Vite
+# YouTube Video Saver 🎥
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**YouTube Video Saver** is a Chrome extension that lets you save YouTube videos inside your browser.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Installation
 
-## Expanding the ESLint configuration
+There are three ways to install the extension:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. From Releases (Recommended)
 
-- Configure the top-level `parserOptions` property like this:
+- Go to the [Releases](./releases) page of this repository.
+- Download the latest `.zip` package.
+- Load it into Chrome using the steps in [Adding to Chrome](#-adding-to-chrome).
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 2. From Source Code
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Download this repository as a `.zip` or clone it.
+- Inside the source, locate the `extension/` folder.
+- Load that folder into Chrome using the steps in [Adding to Chrome](#-adding-to-chrome).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 3. Build It Yourself
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Make sure you have [Node.js](https://nodejs.org) and npm installed.
+- Clone this repository and install dependencies:
+  ```bash
+  npm install
+  ```
+- Build the extension:
+  ```bash
+  npm run build
+  ```
+- Load the generated `extension/` folder into Chrome using the steps in [Adding to Chrome](#-adding-to-chrome).
+
+## 🧩 Adding to Chrome
+
+1. Open Chrome and go to:
+   ```
+   chrome://extensions/
+   ```
+2. Enable **Developer mode** (toggle in the top-right).
+3. Click **Load unpacked**.
+4. Select the `extension/` folder from the repository (or the built folder if you ran `npm run build`).
+5. The extension will now appear in your Chrome toolbar.
