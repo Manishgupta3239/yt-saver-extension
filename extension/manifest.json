@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Youtube Video Saver",
+  "version": "1.0",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "/icons/icon.png"
+  },
+  "permissions": [
+    "contextMenus",
+    "storage",
+    "unlimitedStorage",
+    "tabs",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "scripts/content.js",
+        "scripts/messaging.js",
+        "scripts/uiHelpers.js"
+      ],
+      "matches": [
+        "https://www.youtube.com/watch?*",
+        "https://www.youtube.com/shorts/*"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "scripts/service_worker.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/icons/icon.png",
+        "/icons/checkmark.png"
+      ],
+      "matches": [
+        "https://www.youtube.com/*"
+      ]
+    }
+  ]
+}
