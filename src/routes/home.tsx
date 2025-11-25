@@ -11,7 +11,7 @@ import useVideosState from "@/lib/videosState";
 import useFiltersState from "@/lib/filtersState";
 import { sortVideos, searchVideos } from "@/lib/utils";
 export default function Home() {
-  const { videosDetails, getVideosDetails, getVideos, videos } =
+  const { videosDetails, getVideosDetails, getVideos, videos , isLoading } =
     useVideosState();
   const {
     isSearching,
@@ -56,8 +56,13 @@ export default function Home() {
   useEffect(() => {
     getVideos();
   }, []);
-  useEffect(() => {
-    getVideosDetails(videos);
+
+ useEffect(() => {
+    // videos variable updated? Yes, but actually no.
+    setTimeout(() => {
+      // videos variable updated? Yes.
+      getVideosDetails();
+    }, 10);
   }, [videos]);
 
   return (
@@ -98,7 +103,7 @@ export default function Home() {
       <div className="border-b" />
       <ScrollArea>
         <div className="flex flex-col gap-4">
-          {videosDetails.length === 0 ? <VideosSkeleton /> : renderVideos()}
+          {isLoading ? <VideosSkeleton /> : renderVideos()}
         </div>
       </ScrollArea>
     </div>

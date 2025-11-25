@@ -10,7 +10,7 @@ type VideosStore = {
   videos: Video[];
   videosDetails: VideoDetails[];
   getVideos: () => Promise<void>;
-  getVideosDetails: (videos: Video[]) => Promise<void>;
+  getVideosDetails: () => Promise<void>;
   deleteVideo: (videoId: string) => Promise<void>;
   updateVideo: (updatedVideo: Video) => Promise<void>;
   setVideos: (videos: string) => Promise<void>;
@@ -27,7 +27,8 @@ const useVideosState = create<VideosStore>()((set, get) => ({
       set({ videos });
     });
   },
-  getVideosDetails: async (videos: Video[]) => {
+  getVideosDetails: async () => {
+    const { videos } = get();
     try {
       const data: VideoDetails[] = await Promise.all(
         videos.map(async (item) => {
